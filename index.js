@@ -135,8 +135,12 @@ function gerarRobots(){
 
   const permitidos = gerarListaDeElementos(permitidosElementos)
   const bloqueados = gerarListaDeElementos(bloqueadosElementos)
-
-  let auxiliar = sitemap ? `Sitemap: ${sitemap}\n` : '';
+  
+  let auxiliar = ``;
+  
+  if(sitemap.includes('https://') || sitemap.includes('http://') || sitemap.includes('www.')){
+    auxiliar = `Sitemap: ${sitemap}\n`;
+  }
 
   pathsBloqueadosInput.forEach(path => {
     auxiliar += `Disallow: ${path}`
