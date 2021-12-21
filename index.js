@@ -91,6 +91,9 @@ const RobotsContent = {
   `,
 };
 
+const createLiElement = () => document.createElement('li')
+const createButtonElement = () => document.createElement('button')
+
 const caminhos = []
 
 function adicionarCaminho(){
@@ -123,17 +126,21 @@ function renderizarCaminhos() {
   })
 }
 
-const createLiElement = () => document.createElement('li')
-const createButtonElement = () => document.createElement('button')
 
 function gerarRobots(){
   const permitidosElementos = document.querySelectorAll('.permitidos .checkbox input'); 
   const bloqueadosElementos = document.querySelectorAll('.bloqueados .checkbox input'); 
+  const sitemap = document.querySelector('.sitemap').value;
+  const pathsBloqueadosInput = caminhos
 
   const permitidos = gerarListaDeElementos(permitidosElementos)
   const bloqueados = gerarListaDeElementos(bloqueadosElementos)
 
-  let auxiliar = ``;
+  let auxiliar = sitemap ? `Sitemap: ${sitemap}\n` : '';
+
+  pathsBloqueadosInput.forEach(path => {
+    auxiliar += `Disallow: ${path}`
+  })
 
   permitidos.forEach(mecanismo => {
     auxiliar += RobotsContent[mecanismo]('Allow').replaceAll(' ', '')
@@ -143,7 +150,7 @@ function gerarRobots(){
     auxiliar += RobotsContent[mecanismo]('Disallow').replaceAll(' ', '')
   });
 
-  const robots = auxiliar.replaceAll(' ', '').replaceAll('\n\n', '\n').replace('\n', '')
+  const robots = auxiliar.replaceAll(' ', '').replaceAll('\n\n', '\n')
   
   renderizarRobots(robots)
 }
