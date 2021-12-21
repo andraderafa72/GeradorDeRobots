@@ -127,7 +127,37 @@ const createLiElement = () => document.createElement('li')
 const createButtonElement = () => document.createElement('button')
 
 function gerarRobots(){
+  const permitidosElementos = document.querySelectorAll('.permitidos .checkbox input'); 
+  const bloqueadosElementos = document.querySelectorAll('.bloqueados .checkbox input'); 
 
+  const permitidos = gerarListaDeElementos(permitidosElementos)
+  const bloqueados = gerarListaDeElementos(bloqueadosElementos)
+
+  let auxiliar = ``;
+
+  permitidos.forEach(mecanismo => {
+    auxiliar += RobotsContent[mecanismo]('Allow').replaceAll(' ', '')
+  });
+
+  bloqueados.forEach(mecanismo => {
+    auxiliar += RobotsContent[mecanismo]('Disallow').replaceAll(' ', '')
+  });
+
+  const robots = auxiliar.replaceAll(' ', '').replaceAll('\n\n', '\n').replace('\n', '')
+  
+  renderizarRobots(robots)
 }
 
-console.log(RobotsContent['Google']('Disallow').replaceAll(' ', '').replaceAll('  ', ''));
+function renderizarRobots(robots){
+  const textarea = document.querySelector('#result');
+  textarea.value = robots
+}
+
+function gerarListaDeElementos (elementos) {
+  const lista = []
+  elementos.forEach(elemento => {
+    if(elemento.checked) lista.push(elemento.name)
+  })
+
+  return lista
+}
