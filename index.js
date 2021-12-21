@@ -172,3 +172,8 @@ function gerarListaDeElementos (elementos) {
 
   return lista
 }
+
+function copyRobots(){
+  const robots = document.querySelector('#result').value
+  navigator.clipboard.writeText(robots)
+}
