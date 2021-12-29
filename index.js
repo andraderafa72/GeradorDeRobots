@@ -128,13 +128,13 @@ function renderizarCaminhos() {
 
 
 function gerarRobots(){
-  const permitidosElementos = document.querySelectorAll('.opcoes .checkbox input:checked'); 
-  const bloqueadosElementos = document.querySelectorAll('.opcoes .checkbox input:not(:checked)'); 
+  const checkboxElementos = document.querySelectorAll('.opcoes .checkbox input'); 
   const sitemap = document.querySelector('.sitemap').value;
   const pathsBloqueadosInput = caminhos
 
-  const permitidos = gerarListaDeElementos(permitidosElementos)
-  const bloqueados = gerarListaDeElementos(bloqueadosElementos)
+  const {permitidos, bloqueados} = gerarListaDeElementos(checkboxElementos)
+
+  console.log(permitidos, bloqueados);
   
   let auxiliar = ``;
   
@@ -165,12 +165,20 @@ function renderizarRobots(robots){
 }
 
 function gerarListaDeElementos (elementos) {
-  const lista = []
+  const permitidos = []
+  const bloqueados = []
   elementos.forEach(elemento => {
-    if(elemento.checked) lista.push(elemento.name)
+    if(elemento.checked) {
+      permitidos.push(elemento.name)
+    } else {
+      bloqueados.push(elemento.name)
+    }
   })
 
-  return lista
+  return {
+    permitidos,
+    bloqueados
+  }
 }
 
 function copyRobots(){
