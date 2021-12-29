@@ -128,8 +128,8 @@ function renderizarCaminhos() {
 
 
 function gerarRobots(){
-  const permitidosElementos = document.querySelectorAll('.permitidos .checkbox input'); 
-  const bloqueadosElementos = document.querySelectorAll('.bloqueados .checkbox input'); 
+  const permitidosElementos = document.querySelectorAll('.opcoes .checkbox input:checked'); 
+  const bloqueadosElementos = document.querySelectorAll('.opcoes .checkbox input:not(:checked)'); 
   const sitemap = document.querySelector('.sitemap').value;
   const pathsBloqueadosInput = caminhos
 

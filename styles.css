@@ -148,6 +148,7 @@
   display: -ms-flexbox;
   display: flex;
   gap: 1rem;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -265,5 +266,69 @@
 .gerar-robots {
   width: 100%;
   margin-bottom: 3rem;
+}
+
+.opcoes {
+  width: 100%;
+}
+
+.opcoes .checkbox input {
+  display: none;
+}
+
+.opcoes .checkbox input:checked + label {
+  background: #14b10c1c;
+}
+
+.opcoes .checkbox input:checked + label .switch {
+  background: #5B1AB2;
+}
+
+.opcoes .checkbox input:checked + label .switch .circle {
+  left: 35px;
+}
+
+.opcoes .checkbox label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: .675rem 1rem;
+  -webkit-transition: .2s;
+  transition: .2s;
+  background: #ff00001c;
+  border-bottom: 1px solid #d1caca;
+}
+
+.opcoes .checkbox label:hover {
+  background: #f9f9f9;
+}
+
+.opcoes .checkbox label .switch {
+  width: 70px;
+  height: 40px;
+  border-radius: 50px;
+  background: #ccc;
+  position: relative;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.opcoes .checkbox label .switch .circle {
+  -webkit-transition: .2s;
+  transition: .2s;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: #fff;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
 }
 /*# sourceMappingURL=styles.css.map */
